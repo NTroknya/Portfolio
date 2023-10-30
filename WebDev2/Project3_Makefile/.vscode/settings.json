@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "c:\\Users\\tonka\\OneDrive\\CS3100\\Project3_Makefile",
+            "binaryPath": "c:\\Users\\tonka\\OneDrive\\CS3100\\Project3_Makefile\\main.exe",
+            "binaryArgs": []
+        }
+    ]
+}
