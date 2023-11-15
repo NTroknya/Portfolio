@@ -1,0 +1,22 @@
+body{
+    font-weight:50;
+    color:gray;
+}
+p{
+    font-weight:50;
+    color:black;
+}
+form{
+    padding:11px;
+    border:1px soid #000;
+    width:500px;
+    margin:150px auto 0;
+    background-color: tan;
+}
+div{
+    margin:15px 0;
+}
+.error{
+    font-weight:700;
+    color:red;
+}

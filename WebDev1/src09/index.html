@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Chocolate Chip Cookies</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module">
+    import { recipeApp } from './script.js';
+    import { renderRecipe } from '/render-recipe.js';
+    recipeApp('/search', renderRecipe);
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>The Wright Recipes</h1>
+  </header>
+
+  <main>
+    <section id="search" class="rounded bordered">
+      <h3>Find a recipe</h3>
+
+      <!-- search form here -->
+      <form id="recipeForm">
+        <label>
+          Recipe name:
+          <input id="recipeInput" name="title">
+        </label>
+        <button id="searchButton" type="button">Search</button>
+        <button id="reset" type="button">Reset</button>
+      </form>
+
+      <ul id="search-results"></ul>
+    </section>
+
+    <div id="recipe" class="hidden">
+      <h2 id="recipe-name"></h2>
+      <div class="row">
+        <div id="lightbox" class="rounded bordered"></div>
+        <div id="header-info" class="rounded bordered">
+          <table>
+            <tbody>
+              <tr>
+                <th scope="row">Prep time</th>
+                <td id="prepTimeCell">?</td>
+                <td>minutes</td>
+              </tr>
+              <tr>
+                <th scope="row">Cook time</th>
+                <td id="cookTimeCell">?</td>
+                <td>minutes</td>
+              </tr>
+              <tr>
+                <th scope="row">Total time</th>
+                <td id="totalTimeCell">?</td>
+                <td>minutes</td>
+              </tr>
+              <tr>
+                <th scope="row">Servings</th>
+                <td id="servingsCell">?</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="ingredients-and-steps">
+        <section class="section rounded bordered" id="ingredients" aria-labelledby="ingredients-header">
+          <h3 id="ingredients-header">Ingredients</h3>
+          <ul></ul>
+        </section>
+
+        <section class="section rounded bordered" id="steps" aria-labelledby="steps-header">
+          <h3 id="steps-header">Steps</h3>
+          <ol></ol>
+        </section>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Chocolate Chip Cookies</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module">
+      import { renderRecipe } from './script.js';
+
+      function _renderRecipe(recipe) {
+        const qs = (sel) => document.querySelector(sel);
+        qs('#servingsCell').textContent = recipe.servings;
+        qs('#prepTimeCell').textContent = recipe.times.prep;
+        qs('#cookTimeCell').textContent = recipe.times.cook;
+        qs('#totalTimeCell').textContent =
+          recipe.times.cook + recipe.times.prep;
+        qs('#caloriesCell').textContent = Math.round(
+          recipe.ingredients.reduce((cal, ing) => cal + ing.calories, 0) /
+            recipe.servings
+        );
+        qs('#fatCell').textContent = Math.round(
+          recipe.ingredients.reduce((fat, ing) => fat + ing.fat, 0) /
+            recipe.servings
+        );
+        qs('#sugarCell').textContent = Math.round(
+          recipe.ingredients.reduce((sugar, ing) => sugar + ing.sugar, 0) /
+            recipe.servings
+        );
+
+        const steps = document.createElement('ol');
+        for (const s of recipe.steps) {
+          const step = document.createElement('li');
+          step.textContent = s;
+          steps.append(step);
+        }
+        qs('#steps').append(steps);
+
+        const ingredients = document.createElement('ul');
+        for (const i of recipe.ingredients) {
+          const ingredient = document.createElement('li');
+          const name = document.createElement('span');
+          name.classList.add('name');
+          name.textContent = i.name;
+          ingredient.append(`${i.amount} ${i.units} `, name);
+          ingredients.append(ingredient);
+        }
+        qs('#ingredients').append(ingredients);
+      }
+
+      renderRecipe(
+        'chocolate-chip-cookies',
+        _renderRecipe,
+        document.querySelector('#lightbox')
+      );
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Chocolate Chip Cookies</h1>
+
+      <div class="row">
+        <div id="lightbox" class="rounded bordered"></div>
+        <div id="header-info" class="rounded bordered">
+          <table>
+            <tbody>
+              <tr>
+                <th scope="row">Prep time</th>
+                <td id="prepTimeCell">?</td>
+                <td>minutes</td>
+              </tr>
+              <tr>
+                <th scope="row">Cook time</th>
+                <td id="cookTimeCell">?</td>
+                <td>minutes</td>
+              </tr>
+              <tr>
+                <th scope="row">Total time</th>
+                <td id="totalTimeCell">?</td>
+                <td>minutes</td>
+              </tr>
+              <tr>
+                <th scope="row">Servings</th>
+                <td id="servingsCell">?</td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Calories</th>
+                <td id="caloriesCell">?</td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Fat</th>
+                <td id="fatCell">?</td>
+                <td>g</td>
+              </tr>
+              <tr>
+                <th scope="row">Sugar</th>
+                <td id="sugarCell">?</td>
+                <td>g</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section
+        class="section rounded bordered"
+        aria-labelledby="ingredients-header"
+        id="ingredients"
+      >
+        <h2 id="ingredients-header">Ingredients</h2>
+      </section>
+
+      <section
+        class="section rounded bordered"
+        aria-labelledby="steps-header"
+        id="steps"
+      >
+        <h2 id="steps-header">Steps</h2>
+      </section>
+    </main>
+  </body>
+</html>
